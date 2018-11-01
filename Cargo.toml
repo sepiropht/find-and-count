@@ -1,0 +1,7 @@
+[package]
+name = "fdl"
+version = "0.1.0"
+authors = ["sepiropht <sergembotta@mailoo.org>"]
+edition = "2018"
+
+[dependencies]

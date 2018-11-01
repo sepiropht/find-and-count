@@ -1,0 +1,28 @@
+use std::fs;
+use std::path::Path;
+
+fn main() -> std::io::Result<()> {
+   let mut files = vec![];
+   crawl_dir(&Path::new("."), &mut files)?;
+   println!("{:?}", files);
+   println!("il y a {} dans ce repertoire et sous repertoires",files.len());
+   Ok(())
+
+}
+
+fn crawl_dir(dir : &Path, files: &mut Vec<&str>) -> std::io::Result<()> {
+    for entry in fs::read_dir(dir)? {
+        let entry = entry?;
+        let path = entry.path();
+        if path.is_file() {
+            match path.to_str {
+                s => files.push(s),
+                Err => Err
+            }
+        }
+        else {
+           crawl_dir(&path, files)?;
+        }
+    }
+    Ok(())
+}
