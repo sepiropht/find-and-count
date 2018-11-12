@@ -5,3 +5,4 @@ authors = ["sepiropht <sergembotta@mailoo.org>"]
 edition = "2018"
 
 [dependencies]
+colored = "1.6"
